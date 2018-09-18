@@ -8,7 +8,7 @@
 export default {
     name: "todoItemInput",
     props: {
-        input : Text
+        input : String
     }
 }
 </script>
