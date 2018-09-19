@@ -1,7 +1,7 @@
 <template>
   <div class="list-item">
     <CheckBox v-bind:checked="completed" v-on:checkedChanged = "checkboxValueChanged($event)"/>  {{ item }}
-    <DeleteButton v-on:buttonDeleteClicked = "buttonDelete()" />
+    <DeleteButton v-on:buttonDeleteClicked = "buttonDelete(id)" />
   </div>
 </template>
 
@@ -26,9 +26,11 @@ export default {
       //alert('Checked in ListItem ')
       this.$emit('itemChecked', checked)
     },
-    buttonDelete(){
-      this.$emit('buttonDeleteClicked');
-      //alert('Delete i ListItem ' + this.id)
+    buttonDelete(id){
+      //this.$emit('buttonDeleteClicked');
+      const index = this.$store.state.todos.findIndex(item => item.id == id);
+      this.$store.state.todos.splice(index,1);
+      //alert('Delete i ListItem ' + index)
     }
   }
 }

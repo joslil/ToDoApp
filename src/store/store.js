@@ -30,5 +30,14 @@ export const store = new Vuex.Store({
       anyRemaining(state, getters){
         return getters.remaining != 0
       }
+    },
+    mutations: {
+      addTodo(state, todo){
+        store.state.todos.push({
+          id: store.state.todos.length,
+          name: todo.name,
+          completed: todo.completed
+        })
+      }
     }
 })
